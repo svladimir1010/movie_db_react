@@ -1,0 +1,70 @@
+.app .dashboard {
+    /* margin-top: 0; */
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard .popular-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.dashboard img {
+    width: 100%;
+}
+
+.dashboard .card {
+    border: .5px solid rgba(0, 0, 0, 0.5);
+    position: relative;
+    margin: 15px auto;
+    width: 80%;
+}
+
+.content-details {
+    z-index: 99;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .85);
+    top: 0em;
+    opacity: 0;
+    display: grid;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: opacity .2s linear;
+}
+
+.dashboard .content-details:hover {
+    opacity: 1;
+}
+
+.content-details h6 {
+    font-size: 1.1rem;
+    padding: 0 1em;
+    color: rgb(33, 208, 122);
+    letter-spacing: 0.3em;
+}
+
+.content-details p {
+    color: rgb(33, 208, 122);
+    font-size: 1.2rem;
+}
+
+@media only screen and (min-width: 1280px) {
+    .dashboard .MuiGrid-grid-lg-3-74 {
+        flex-grow: 0;
+        max-width: 20%;
+        flex-basis: 20%;
+    }
+}
+
+@media (min-width: 960px) {
+    .MuiGrid-grid-md-4-61 {
+        flex-grow: 0;
+        max-width: 24.333333%;
+        flex-basis: 24.333333%;
+    }
+}

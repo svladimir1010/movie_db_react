@@ -1,0 +1,47 @@
+.header {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    /* padding-left: 10px; */
+    align-items: center;
+    background: rgb(34, 38, 34)
+}
+
+.header img {
+    width: 200px;
+    opacity: .6;
+    transition: .5s ease;
+}
+
+.header ul li {
+    list-style: none;
+    margin: 0;
+    padding: .5rem 1rem;
+    border-radius: 3px;
+}
+
+.header ul li a {
+    color: rgb(33, 210, 120);
+    opacity: .8;
+    transition: .5s ease;
+    font-size: 16px;
+}
+
+.header ul li:hover {
+    background-color: #444;
+}
+
+.header a:hover {
+    text-decoration: none;
+}
+
+.header a:hover img {
+    opacity: 1;
+}
+
+.header .mb-3 {
+    /* padding-right: 10px; */
+    width: 50%;
+    min-width: 25%;
+    opacity: .7;
+}
+

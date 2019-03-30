@@ -1,0 +1,24 @@
+.dashboard-but {
+    display: flex;
+    width: 30%;
+    margin: 0 auto;
+}
+
+.dashboard .button {
+    width: 50%;
+    padding: 4px 2px;
+    outline: none;
+    background: rgba(0,0,0,.1);
+    margin: 2% 1%;
+}
+
+.dashboard .button:hover {
+    background:  #444;
+}
+
+.dashboard .button span {
+    font-weight: normal;
+    font-size: 1rem;
+    letter-spacing: 0.13em;
+    color: rgb(33, 210, 120);
+}

@@ -1,0 +1,23 @@
+.error-indicator {
+    background: pink;
+    border-radius: 8px;
+    display: -webkit-flex;
+    padding: 60px;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: center;
+    justify-content: space-around;
+    text-align: center;
+    height: 200%;
+}
+
+.error-indicator img {
+    width: 20%;
+    margin: auto;
+    border-radius: 8px;
+}
+
+.error-indicator .warning{
+    color: red;
+}

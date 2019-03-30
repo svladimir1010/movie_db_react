@@ -10,6 +10,7 @@ import {
 import Button from "../button";
 import SwapiService from "../../services";
 import Spinner from "../spinner";
+import ErrorIndicator from "../error-indicator";
 
 import { URL_LIST, API_KEY, URL_IMG, IMG_SIZE_LARGE, LANG_EN } from "../../const";
 
@@ -19,7 +20,15 @@ export default class PopularMoviesList extends React.Component {
     state = {
         listMovie: [],
         page: 1,
-        loading: true
+        loading: true,
+        error: false
+    };
+
+    onError = (err) => {
+        this.setState({
+            error: true,
+            loading: false
+        });
     };
 
     componentDidMount() {
@@ -37,17 +46,21 @@ export default class PopularMoviesList extends React.Component {
         if (!page) {
             return;
         }
-        this.swapi.getPopularMovies(page).then(listMovie => {
+        this.swapi.getPopularMovies(page)
+        .then(listMovie => {
             this.setState({
                 listMovie: listMovie,
                 loading: false
             });
-        });
+        })
+        .catch(this.onError);
     }
 
     increment = () => {
         const newPage = this.state.page;
-        newPage === 1 ? this.setState() : this.setState({ page: newPage - 1, loading: true });
+        newPage === 1
+            ? this.setState()
+            : this.setState({ page: newPage - 1, loading: true });
     };
 
     decrement = () => {
@@ -93,20 +106,15 @@ export default class PopularMoviesList extends React.Component {
     }
 
     render() {
-        const { listMovie, loading } = this.state;
+        const { listMovie, loading, error } = this.state;
 
-        if (loading) {
-            return <Spinner />;
-        }
-
-        if (!listMovie) {
-            return <div>'Ничего НЕТ'</div>;
-        }
+        const hasData = !(loading || error);
         const items = this.renderItems(listMovie);
 
+        const errorMessage = error ? <ErrorIndicator /> : null;
         const spinner = loading ? <Spinner /> : null;
 
-        const content = !loading ? (
+        const content = hasData ? (
             <PopularMovies
                 items={items}
                 decrement={this.decrement}
@@ -116,6 +124,7 @@ export default class PopularMoviesList extends React.Component {
 
         return (
             <Grid container spacing={24} className="dashboard">
+                {errorMessage}
                 {spinner}
                 {content}
             </Grid>

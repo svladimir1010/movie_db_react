@@ -64,7 +64,7 @@ export default class SwapiService {
 	}
 
 	// get popular movies
-	async getPopularMovies(id=1) {
+	getPopularMovies = async (id=1) => {
 		const res = await this.getResource(
 			`movie/popular?`,
 			`&page=${id}`

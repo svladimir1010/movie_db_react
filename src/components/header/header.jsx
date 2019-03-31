@@ -3,6 +3,7 @@ import SearchPanel from "./search-panel";
 import "./header.css";
 
 const Header = () => {
+
     return (
         <div className="header d-flex ">
             <h3>
@@ -13,6 +14,7 @@ const Header = () => {
             <ul className="d-flex">
                 <li>
                     <a href="foo">Популярное</a>
+                    
                 </li>
                 <li>
                     <a href="foo">Фильмы</a>

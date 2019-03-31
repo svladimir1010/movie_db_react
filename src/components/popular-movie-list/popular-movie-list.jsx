@@ -8,14 +8,14 @@ import {
     CardMedia
 } from "@material-ui/core";
 import Button from "../button";
-import SwapiService from "../../services";
+// import SwapiService from "../../services";
 import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
 
 import { URL_LIST, API_KEY, URL_IMG, IMG_SIZE_LARGE, LANG_EN } from "../../const";
 
 export default class PopularMoviesList extends React.Component {
-    swapi = new SwapiService();
+    // swapi = new SwapiService();
 
     state = {
         listMovie: [],
@@ -24,7 +24,7 @@ export default class PopularMoviesList extends React.Component {
         error: false
     };
 
-    onError = (err) => {
+    onError = err => {
         this.setState({
             error: true,
             loading: false
@@ -32,29 +32,31 @@ export default class PopularMoviesList extends React.Component {
     };
 
     componentDidMount() {
-        this.listPopular();
+        const { getData } = this.props;
+        this.listPopular(getData);
     }
 
     componentDidUpdate(prevProps, prevState) {
+        const { getData } = this.props;
         if (prevState.page !== this.state.page) {
-            this.listPopular();
+            this.listPopular(getData);
         }
     }
 
-    listPopular() {
+    listPopular = data => {
         const page = this.state.page;
         if (!page) {
             return;
         }
-        this.swapi.getPopularMovies(page)
-        .then(listMovie => {
-            this.setState({
-                listMovie: listMovie,
-                loading: false
-            });
-        })
-        .catch(this.onError);
-    }
+        data(page)
+            .then(listMovie => {
+                this.setState({
+                    listMovie: listMovie,
+                    loading: false
+                });
+            })
+            .catch(this.onError);
+    };
 
     increment = () => {
         const newPage = this.state.page;

@@ -24,6 +24,7 @@ export default class PopularMoviesList extends React.Component {
         error: false
     };
 
+
     onError = err => {
         this.setState({
             error: true,
@@ -48,6 +49,7 @@ export default class PopularMoviesList extends React.Component {
         if (!page) {
             return;
         }
+
         data(page)
             .then(listMovie => {
                 this.setState({
@@ -57,6 +59,8 @@ export default class PopularMoviesList extends React.Component {
             })
             .catch(this.onError);
     };
+
+
 
     increment = () => {
         const newPage = this.state.page;

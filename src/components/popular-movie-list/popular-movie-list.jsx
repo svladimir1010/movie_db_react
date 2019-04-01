@@ -1,29 +1,18 @@
 import React from "react";
 import "./popular-movie-list.css";
-import {
-    Typography,
-    Grid,
-    Card,
-    CardActionArea,
-    CardMedia
-} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Button from "../button";
-// import SwapiService from "../../services";
 import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
-
-import { URL_LIST, API_KEY, URL_IMG, IMG_SIZE_LARGE, LANG_EN } from "../../const";
+import CardMovie from "../card-movie";
 
 export default class PopularMoviesList extends React.Component {
-    // swapi = new SwapiService();
-
     state = {
         listMovie: [],
         page: 1,
         loading: true,
         error: false
     };
-
 
     onError = err => {
         this.setState({
@@ -60,8 +49,6 @@ export default class PopularMoviesList extends React.Component {
             .catch(this.onError);
     };
 
-
-
     increment = () => {
         const newPage = this.state.page;
         newPage === 1
@@ -76,38 +63,7 @@ export default class PopularMoviesList extends React.Component {
 
     renderItems(arr) {
         return arr.map(movie => {
-            return (
-                <Grid key={movie.id} item xs={6} sm={4} md={4} lg={3}>
-                    <Card className="card">
-                        <CardActionArea onClick={() => this.goToDetail(movie.id)}>
-                            <CardMedia src="blob" className="content">
-                                <div className="content-overlay" />
-
-                                <img
-                                    src={
-                                        URL_IMG + IMG_SIZE_LARGE + movie.poster_path
-                                    }
-                                    className="content-image"
-                                    alt="Here the pictur"
-                                />
-
-                                <div className="content-details fadeIn-bottom">
-                                    <Typography
-                                        variant="h6"
-                                        className="content-title">
-                                        {movie.title}
-                                    </Typography>
-                                    <Typography
-                                        component="p"
-                                        className="content-text">
-                                        {movie.vote_average}
-                                    </Typography>
-                                </div>
-                            </CardMedia>
-                        </CardActionArea>
-                    </Card>
-                </Grid>
-            );
+            return <CardMovie key={movie.id} dataMovie={movie} />;
         });
     }
 

@@ -22,6 +22,13 @@
     width: 80%;
 }
 
+.dashboard .card:hover {
+    -moz-box-shadow: 1px 0px 30px #000000;
+    -webkit-box-shadow: 1px 0px 30px #000000;
+    box-shadow: 1px 0px 30px #000000;
+    transition: .2s linear;
+}
+
 .content-details {
     z-index: 99;
     position: absolute;

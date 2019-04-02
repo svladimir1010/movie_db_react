@@ -13,14 +13,14 @@ const Header = () => {
             </h3>
             <ul className="d-flex">
                 <li>
-                    <a href="foo">Популярное</a>
+                    <a href="foo">Все</a>
                     
                 </li>
                 <li>
-                    <a href="foo">Фильмы</a>
+                    <a href="foo">Популярное</a>
                 </li>
                 <li>
-                    <a href="foo">Сериалы</a>
+                    <a href="foo">Детям</a>
                 </li>
                 <li>
                     <a href="foo">Аниме</a>

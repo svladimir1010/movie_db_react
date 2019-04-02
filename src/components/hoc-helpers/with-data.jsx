@@ -1,48 +1,11 @@
 import React, { Component } from "react";
-import "./popular-movie-list.css";
-import { Grid } from "@material-ui/core";
 import Button from "../button";
 import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
 import CardMovie from "../card-movie";
 import PropTypes from "prop-types";
 
-// ================================================
-
-const PopularMoviesList = props => {
-    const { errorMessage, spinner, content } = props;
-    return (
-        <Grid container spacing={24} className="dashboard">
-            {errorMessage}
-            {spinner}
-            {content}
-        </Grid>
-    );
-};
-
-// =================================================
-
-const Page = ({ decrement, increment, items }) => {
-    return (
-        <>
-            <div className="dashboard-but top">
-                <Button decrement={decrement} increment={increment} />
-            </div>
-            <div className="popular-content">{items}</div>
-            <div className="dashboard-but bottom">
-                <Button decrement={decrement} increment={increment} />
-            </div>
-        </>
-    );
-};
-
-Page.propTypes = {
-    decrement: PropTypes.func.isRequired,
-    increment: PropTypes.func.isRequired,
-    items: PropTypes.array.isRequired
-};
-// ============================================================================
-const withData = View => {
+const withData = (View, getData) => {
     return class extends Component {
         state = {
             dataList: [],
@@ -59,12 +22,10 @@ const withData = View => {
         };
 
         componentDidMount() {
-            const { getData } = this.props;
             this.listPopular(getData);
         }
 
         componentDidUpdate(prevProps, prevState) {
-            const { getData } = this.props;
             if (prevState.page !== this.state.page) {
                 this.listPopular(getData);
             }
@@ -131,4 +92,24 @@ const withData = View => {
     };
 };
 
-export default withData(PopularMoviesList);
+const Page = ({ decrement, increment, items }) => {
+    return (
+        <>
+            <div className="dashboard-but top">
+                <Button decrement={decrement} increment={increment} />
+            </div>
+            <div className="popular-content">{items}</div>
+            <div className="dashboard-but bottom">
+                <Button decrement={decrement} increment={increment} />
+            </div>
+        </>
+    );
+};
+
+Page.propTypes = {
+    decrement: PropTypes.func.isRequired,
+    increment: PropTypes.func.isRequired,
+    items: PropTypes.array.isRequired
+};
+
+export default withData;

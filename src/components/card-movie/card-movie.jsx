@@ -8,7 +8,7 @@ import {
     CardMedia
 } from "@material-ui/core";
 import PropTypes from 'prop-types';
-import { URL_LIST, API_KEY, URL_IMG, IMG_SIZE_LARGE, LANG_EN } from "../../const";
+import { URL_IMG, IMG_SIZE_LARGE } from "../../const";
 
 const CardMovie = (props) => {
     const {dataMovie}= props

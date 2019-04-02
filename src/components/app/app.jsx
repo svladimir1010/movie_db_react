@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "../header";
 import PopularMoviesList from "../popular-movie-list";
+import Movies from '../movies'
 // import Spinner from '../spinner'
 import SwapiService from "../../services";
 
@@ -28,6 +29,8 @@ export default class App extends Component {
                 <Header />
 
                 <PopularMoviesList getData={this.swapiService.getPopularMovies} />
+
+                {/* <Movies getData={this.swapiService.getKidsMovies}/> */}
                 {/* <Spinner /> */}
             </div>
         );

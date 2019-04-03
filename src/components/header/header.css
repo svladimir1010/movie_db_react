@@ -1,50 +1,51 @@
-.header {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    /* padding-left: 10px; */
+.header-cont {
+    position: fixed;
+    z-index: 999;
+    top: 0px;
+    width: 95%;
+    padding: 0.6rem 1rem 0;
     align-items: center;
-    background: rgb(34, 38, 34)
+    background: rgb(33, 33, 33)
 }
 
-.header img {
+.header-cont img {
     width: 200px;
     opacity: .6;
     transition: .5s ease;
 }
 
-.header ul li {
+.header-cont ul li {
     list-style: none;
     margin: 0;
     padding: .5rem 1rem;
     border-radius: 3px;
 }
 
-.header ul li a {
+.header-cont ul li a {
     color: rgb(33, 210, 120);
     opacity: .8;
     transition: .5s ease;
     font-size: 16px;
 }
 
-.header ul li:hover {
+.header-cont ul li:hover {
     background-color: #444;
     -moz-box-shadow: 0px 0px 5px #f5f7ef;
     -webkit-box-shadow: 0px 0px 5px #f5f7ef;
     box-shadow: 0px 0px 5px #f5f7ef;
 }
 
-.header a:hover {
+.header-cont a:hover {
     text-decoration: none;
 
 }
 
-.header a:hover img {
+.header-cont a:hover img {
     opacity: 1;
 }
 
-.header .mb-3 {
-    /* padding-right: 10px; */
-    width: 35%;
+.header-cont .mb-3 {
+    width: 40%;
     min-width: 25%;
     opacity: .7;
 }

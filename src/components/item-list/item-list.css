@@ -1,5 +1,7 @@
 .app .dashboard {
     /* margin-top: 0; */
+    position: relative;
+    top: 7rem;
     display: flex;
     flex-direction: column;
 }

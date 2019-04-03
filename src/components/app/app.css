@@ -1,3 +1,9 @@
 .app {
-    margin: 2%;
+        width: 95%;
+        margin: 0 auto;
+}
+.app .caption {
+    position: absolute;
+    top: 7.5rem;
+    left: 3.2rem;
 }

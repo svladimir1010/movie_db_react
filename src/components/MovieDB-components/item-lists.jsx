@@ -1,8 +1,7 @@
-import React from "react";
+// import React from "react";
 import ItemList from "../item-list";
 import { withData } from "../hoc-helpers";
 import SwapiService from "../../services";
-
 const swapiService = new SwapiService();
 
 const { 
@@ -22,3 +21,6 @@ export {
     GetAllMovies, 
     GetKidsMovies 
 };
+
+
+

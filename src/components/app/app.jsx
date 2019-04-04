@@ -5,6 +5,15 @@ import "./app.css";
 // import png from './837671.jpg'
 // import Header from "../header";
 // import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+    Grid,
+    Typography,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableRow
+} from "@material-ui/core";
 // import {
 //     GetPopularMovies,
 //     GetAllMovies,
@@ -31,7 +40,9 @@ export default class App extends Component {
             return <ErrorIndicator />;
         }
         return (
+            
             <Ditails />
+            
             // <Router>
             //     <div className="app">
             //         {/* <SwapiServiceProvider value={this.swapiService}> */}
@@ -63,6 +74,7 @@ export default class App extends Component {
             //         {/* </SwapiServiceProvider> */}
             //     </div>
             // </Router>
+            
         )
     }
 }

@@ -39,6 +39,8 @@ export default class SwapiService {
         return body.results;
     };
 
+    
+
     // get info config of movie
     async getMoviesConfig() {
         return await this.getResource(`configuration?`);
@@ -71,7 +73,8 @@ export default class SwapiService {
 
     // get movie
     async getMoviesVideos(vid) {
-        return await this.getResource(`movie/${vid}/videos?`);
+       const res = await this.getResource(`movie/${vid}/videos?`);
+        return res.results;
     }
 
     // get popular movies
@@ -89,20 +92,7 @@ export default class SwapiService {
         return res.results;
     };
 
-    getKidsMovies = async (id = 1) => {
-        const res = await fetch(
-            `${this._API_BASE_URL}${this.DISCOVER}${this._API_KEY}${this.LANG}${
-                this.KIDS_URL
-            }&page=${id}`
-        );
-        if (!res.ok) {
-            throw new Error(
-                `У нас ПОХИБКА ${this.DISCOVER}` + `, received ${res.status}`
-            );
-        }
-        const body = await res.json();
-        return body.results;
-    };
+    
 
     getSerials = async (id = 2) => {
         const res = await fetch(
@@ -145,12 +135,16 @@ export default class SwapiService {
 
 // get key of video
 
-// swapi.getMoviesVideos(`344566`)
+// swapi.getMoviesVideos(`299`)
 //  .then(body => {
 //      body.results.forEach(e => {
-//         return console.log( e.key )
+//         return console.log( e )
 //      });
 //  } )
+
+// swapi.getMoviesVideos(`299`)
+//  .then(body => console.log( body ));
+  
 
 // movie image
 // https://api.themoviedb.org/3/movie/{movie_id}/images?api_key=df355bdb560d2dcd61eda60746ed703f&language=en-US

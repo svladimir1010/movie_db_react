@@ -14,13 +14,13 @@ const Header = () => {
             </h3>
             <ul className="d-flex">
                 <li>
-                    <Link to='/all'>Главная</Link>
+                   <div><Link to='/all'><span>Home</span></Link></div>
                 </li>
                 <li>
-                    <Link to='/popular'>Популярное</Link>
+                   <div><Link to='/popular'><span>Popular</span></Link></div>
                 </li>
                 <li>
-                    <Link to='/kids'>Детям</Link>
+                    <div><Link to='/kids'><span>Kids</span></Link></div>
                 </li>  
             </ul>
             <SearchPanel />

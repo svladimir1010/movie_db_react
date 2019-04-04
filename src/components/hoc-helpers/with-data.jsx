@@ -22,16 +22,16 @@ const withData = (View, getData) => {
         };
 
         componentDidMount() {
-            this.listPopular(getData);
+            this.listMovie(getData);
         }
 
         componentDidUpdate(prevProps, prevState) {
             if (prevState.page !== this.state.page) {
-                this.listPopular(getData);
+                this.listMovie(getData);
             }
         }
 
-        listPopular = data => {
+        listMovie = data => {
             const page = this.state.page;
             if (page) {
                 return data(page)

@@ -2,17 +2,14 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import "./button.css";
 
-const Butoon = ({ decrement, increment }) => {
+const Butoon = ({ decrement, increment, page }) => {
     return (
         <>
-            {/* <Button variant="contained" color="primary"  onClick={() => this.increment()} >Prev</Button> */}
-            {/* <Button variant="contained" color="primary" onClick={() => this.decrement()} >Next</Button> */}
-
-            <Button className="button prev" onClick={increment}>
+            <Button className="button prev" onClick={decrement} disabled={page <= 1}>
                 Prev
             </Button>
 
-            <Button className="button next" onClick={decrement}>
+            <Button className="button next" onClick={increment}>
                 Next
             </Button>
         </>

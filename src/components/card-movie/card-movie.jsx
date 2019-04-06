@@ -11,11 +11,11 @@ import PropTypes from 'prop-types';
 import { URL_IMG, IMG_SIZE_LARGE } from "../../const";
 
 const CardMovie = (props) => {
-    const {dataMovie}= props
+    const {dataMovie, goToDetail}= props
     return (
         <Grid key={dataMovie.id} item xs={6} sm={4} md={4} lg={3}>
             <Card className="card">
-                <CardActionArea onClick={() => this.goToDetail(dataMovie.id)}>
+                <CardActionArea onClick={() => goToDetail(dataMovie.id)}>
                     <CardMedia src="blob" className="content">
                         <div className="content-overlay" />
 

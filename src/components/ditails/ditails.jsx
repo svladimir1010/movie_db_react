@@ -17,7 +17,7 @@ import {
     TableHead,
     TableRow
 } from "@material-ui/core";
-// import Recommendation from "../recommendation";
+import Recommendation from "../recommendation";
 import Video from '../video'
 // import Button from "../button";
 import Spinner from "../spinner";
@@ -37,6 +37,7 @@ const theme = createMuiTheme({
   });
 
 export default class Ditails extends React.Component {
+
     swapi = new SwapiService();
     state = {
         movie: [],
@@ -75,7 +76,7 @@ export default class Ditails extends React.Component {
 
     render() {
         const { movie } = this.state;
-        console.log(movie);
+        // console.log(movie);
 
         this.Pro =
             movie.production_companies &&
@@ -270,7 +271,7 @@ export default class Ditails extends React.Component {
                         <Typography color="primary" variant={"subtitle1"} className="fw-600 ">
                             Recommendation
                         </Typography>
-                        {/* <Recommendation id={this.state.id} {...this.props}/> */}
+                        <Recommendation id={this.state.id} {...this.props}/>
                     </Grid>
                 </div>
             </Grid>

@@ -45,14 +45,14 @@ const withData = (View, getData) => {
             }
         };
 
-        increment = () => {
+        decrement = () => {
             const newPage = this.state.page;
             newPage === 1
                 ? this.setState()
                 : this.setState({ page: newPage - 1, loading: true });
         };
 
-        decrement = () => {
+        increment = () => {
             const newPage = this.state.page;
             this.setState({ page: newPage + 1, loading: true });
         };
@@ -64,7 +64,7 @@ const withData = (View, getData) => {
         };
 
         render() {
-            const { dataList, loading, error } = this.state;
+            const { dataList, loading, page, error } = this.state;
 
             const hasData = !(loading || error);
             const items = this.renderItems(dataList);
@@ -74,6 +74,7 @@ const withData = (View, getData) => {
 
             const content = hasData ? (
                 <Page
+                    page={page}
                     items={items}
                     decrement={this.decrement}
                     increment={this.increment}
@@ -92,15 +93,15 @@ const withData = (View, getData) => {
     };
 };
 
-const Page = ({ decrement, increment, items }) => {
+const Page = ({ decrement, increment, items, page }) => {
     return (
         <>
             <div className="dashboard-but top">
-                <Button decrement={decrement} increment={increment} />
+                <Button decrement={decrement} increment={increment} page={page} />
             </div>
             <div className="popular-content">{items}</div>
             <div className="dashboard-but bottom">
-                <Button decrement={decrement} increment={increment} />
+                <Button decrement={decrement} increment={increment} page={page} />
             </div>
         </>
     );

@@ -5,15 +5,16 @@ import "./app.css";
 import png from './837671.jpg'
 import Header from "../header";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-// import {
-//     Grid,
-//     Typography,
-//     Table,
-//     TableBody,
-//     TableCell,
-//     TableHead,
-//     TableRow
-// } from "@material-ui/core";
+import { createBrowserHistory } from 'history'
+import {
+    Grid,
+    Typography,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableRow
+} from "@material-ui/core";
 import {
     GetPopularMovies,
     GetAllMovies,
@@ -24,6 +25,17 @@ import ErrorIndicator from "../error-indicator";
 // import { SwapiServiceProvider } from "../swapi-service-context";
 
 // import Ditails  from "../ditails"
+
+
+const history = createBrowserHistory()
+console.log(history)
+
+history.listen((location) => {
+    if (location.action === 'POP') {
+        return;
+    }
+    if (location.pathname !== "/") window.scrollTo(0,0);
+});
 
 export default class App extends Component {
     // swapiService = new SwapiService();
@@ -43,7 +55,7 @@ export default class App extends Component {
             
             // <Ditails />
             
-            <Router>
+            <Router history={history} >
                 <div className="app">
                     {/* <SwapiServiceProvider value={this.swapiService}> */}
                         <Header />

@@ -9,6 +9,7 @@ export default class Video extends Component {
     state = {
         videos: [],
         id: this.props.id,
+        loading: true
     };
 
     componentDidMount() {

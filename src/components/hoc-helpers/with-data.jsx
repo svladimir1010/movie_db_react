@@ -7,9 +7,12 @@ import PropTypes from "prop-types";
 
 const withData = (View, getData) => {
     return class extends Component {
+        // myReg = /[^/]\w*/ без скобок
+        myReg = /\/\w*\D+/;
+        myRegExp = /\/\w*/;
         state = {
             dataList: [],
-            page: 1,
+            page: parseInt(this.props.match.params.id) || 1,
             loading: true,
             error: false
         };
@@ -22,12 +25,20 @@ const withData = (View, getData) => {
         };
 
         componentDidMount() {
-            this.listMovie(getData);
+            const url = this.myRegExp.exec(this.props.match.url)[0] + "/";
+            const page = this.props.match.params.id || 1;
+            this.props.history.push(url + page);
+            this.setState({ page: parseInt(page), loading: true }, () =>
+                this.listMovie(getData)
+            );
         }
 
         componentDidUpdate(prevProps, prevState) {
-            if (prevState.page !== this.state.page) {
-                this.listMovie(getData);
+            if (this.props.match.params.id !== prevProps.match.params.id) {
+                const page = this.props.match.params.id || 1;
+                this.setState({ page: parseInt(page), loading: true }, () =>
+                    this.listMovie(getData)
+                );
             }
         }
 
@@ -46,15 +57,15 @@ const withData = (View, getData) => {
         };
 
         decrement = () => {
-            const newPage = this.state.page;
-            newPage === 1
-                ? this.setState()
-                : this.setState({ page: newPage - 1, loading: true });
+            const url = this.myReg.exec(this.props.match.url)[0];
+            const { page } = this.state;
+            this.props.history.push(url + (page - 1));
         };
 
         increment = () => {
-            const newPage = this.state.page;
-            this.setState({ page: newPage + 1, loading: true });
+            const url = this.myReg.exec(this.props.match.url)[0];
+            const { page } = this.state;
+            this.props.history.push(url + (page + 1));
         };
 
         renderItems = arr => {

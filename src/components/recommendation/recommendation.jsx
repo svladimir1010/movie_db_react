@@ -1,5 +1,5 @@
 import React from "react";
-import './recommendation.css'
+import "./recommendation.css";
 import {
     Typography,
     Grid,
@@ -11,6 +11,8 @@ import { URL_IMG, IMG_SIZE_LARGE } from "../../const";
 import SwapiService from "../../services";
 
 export default class Recommendation extends React.Component {
+    //regExp = /^\/\D*\/\d\/\D+/regExp
+    regExp = /^\/\S*[^0-9]/;
     swapi = new SwapiService();
     state = {
         recommendations: [],
@@ -19,23 +21,19 @@ export default class Recommendation extends React.Component {
     };
 
     componentDidMount() {
-        this.getRecommendation(this.data);
+        this.getRecommendation(this.state.id);
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevState.page !== this.state.page) {
-            this.getRecommendation(this.data);
+        if (prevState.id !== this.state.id) {
+            this.getRecommendation(this.state.id);
         }
     }
 
-    data = id => {
-        return this.swapi.getRecommendation(id);
-    };
-
-    getRecommendation = fun => {
-        const id = this.state.id;
+    getRecommendation = id => {
         if (id) {
-            return fun(id)
+            return this.swapi
+                .getRecommendation(id)
                 .then(data => {
                     this.setState({
                         recommendations: data,
@@ -47,8 +45,9 @@ export default class Recommendation extends React.Component {
     };
 
     goToDetail = id => {
-        console.log(id);
-        this.props.history.push("/detail/" + id);
+        this.setState({ id: id });
+        const url = this.regExp.exec(this.props.match.url)[0];
+        this.props.history.push(url + id);
     };
 
     render() {
@@ -57,7 +56,14 @@ export default class Recommendation extends React.Component {
         this.RecommendationLists =
             recommendations &&
             recommendations.map(rec => (
-                <Grid key={rec.id} item xs={4} sm={2} md={2} lg={2} className='recommendationCard'>
+                <Grid
+                    key={rec.id}
+                    item
+                    xs={4}
+                    sm={2}
+                    md={2}
+                    lg={2}
+                    className="recommendationCard">
                     <Card className="card">
                         <CardActionArea onClick={() => this.goToDetail(rec.id)}>
                             <CardMedia className="content">

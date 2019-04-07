@@ -13,17 +13,14 @@ export default class Video extends Component {
     };
 
     componentDidMount() {
-        this.getVideo(this.data);
+        this.getVideo(this.state.id);
     }
 
-    data = id => {
-        return this.swapi.getMoviesVideos(id);
-    };
-
-    getVideo = func => {
-        const id = this.state.id;
+    getVideo = id => {
         if (id) {
-            return func(id)
+            return this.swapi
+                .getMoviesVideos(id)
+
                 .then(data => {
                     this.setState({
                         videos: data,
@@ -40,7 +37,14 @@ export default class Video extends Component {
         this.VideoLists =
             videos &&
             videos.map(video => (
-                <Grid key={video.id} item xs={4} sm={2} md={2} lg={2} className='videoCard'>
+                <Grid
+                    key={video.id}
+                    item
+                    xs={4}
+                    sm={2}
+                    md={2}
+                    lg={2}
+                    className="videoCard">
                     <div className="card">
                         <YoutubePlayer
                             videoId={video.key}

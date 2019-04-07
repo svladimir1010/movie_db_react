@@ -36,8 +36,9 @@ const withData = (View, getData) => {
         componentDidUpdate(prevProps, prevState) {
             if (this.props.match.params.id !== prevProps.match.params.id) {
                 const page = this.props.match.params.id || 1;
-                this.setState({ page: parseInt(page), loading: true }, () =>
-                    this.listMovie(getData)
+                this.setState(
+                    { page: parseInt(page), ditail: 99, loading: true },
+                    () => this.listMovie(getData)
                 );
             }
         }
@@ -56,10 +57,9 @@ const withData = (View, getData) => {
             }
         };
 
-        goToDetail = (id) => {
-            console.log(this.props.match.url)
+        goToDetail = id => {
             const url = this.props.match.url;
-             this.props.history.push(url + /ditail/ + id);
+            this.props.history.push(url + /ditail/ + id);
         };
 
         decrement = () => {
@@ -76,7 +76,13 @@ const withData = (View, getData) => {
 
         renderItems = arr => {
             return arr.map(movie => {
-                return <CardMovie key={movie.id} dataMovie={movie} goToDetail={this.goToDetail} />;
+                return (
+                    <CardMovie
+                        key={movie.id}
+                        dataMovie={movie}
+                        goToDetail={this.goToDetail}
+                    />
+                );
             });
         };
 

@@ -18,7 +18,6 @@ const CardMovie = props => {
                 <CardActionArea onClick={() => goToDetail(dataMovie.id)}>
                     <CardMedia src="blob" className="content">
                         <div className="content-overlay" />
-
                         <img
                             src={URL_IMG + IMG_SIZE_LARGE + dataMovie.poster_path}
                             className="content-image"

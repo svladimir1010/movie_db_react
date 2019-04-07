@@ -82,7 +82,8 @@
 }
 
 .detail {
-    margin: 10px;
+    /* margin: 10px; */
+    margin: 30px 10px;
 }
 
 .detail a {
@@ -101,15 +102,20 @@
 
 .pro {
     position: relative;
-    top: 100px;
-    margin: 0 10px 0 10px;
+    top: 140px;
+    left: 150px;
+    margin: 0px 10px 0 10px;
 }
 
 .pro-img {
+
     position: absolute;
     bottom: 55px;
+    padding: 5px;
+    background-color: white;
     margin: 10px 0 10px 0;
-    width: 60px;
+    width: 80px;
+    border-radius: 2px;
 }
 
 /* .detail > span {

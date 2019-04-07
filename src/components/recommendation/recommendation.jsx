@@ -1,4 +1,5 @@
 import React from "react";
+import './recommendation.css'
 import {
     Typography,
     Grid,
@@ -56,7 +57,7 @@ export default class Recommendation extends React.Component {
         this.RecommendationLists =
             recommendations &&
             recommendations.map(rec => (
-                <Grid key={rec.id} item xs={4} sm={2} md={2} lg={2}>
+                <Grid key={rec.id} item xs={4} sm={2} md={2} lg={2} className='recommendationCard'>
                     <Card className="card">
                         <CardActionArea onClick={() => this.goToDetail(rec.id)}>
                             <CardMedia className="content">

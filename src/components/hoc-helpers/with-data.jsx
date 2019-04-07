@@ -56,6 +56,12 @@ const withData = (View, getData) => {
             }
         };
 
+        goToDetail = (id) => {
+            console.log(this.props.match.url)
+            const url = this.props.match.url;
+             this.props.history.push(url + /ditail/ + id);
+        };
+
         decrement = () => {
             const url = this.myReg.exec(this.props.match.url)[0];
             const { page } = this.state;
@@ -70,7 +76,7 @@ const withData = (View, getData) => {
 
         renderItems = arr => {
             return arr.map(movie => {
-                return <CardMovie key={movie.id} dataMovie={movie} />;
+                return <CardMovie key={movie.id} dataMovie={movie} goToDetail={this.goToDetail} />;
             });
         };
 

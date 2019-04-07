@@ -234,7 +234,7 @@ export default class Ditails extends React.Component {
                             </TableBody>
                         </Table>
                     </div>
-                    <div className="detail-min-content">
+                    {/* <div className="detail-min-content">
                         <Typography color="primary" variant={"subtitle1"} className="fw-600">
                             {"Budget: " + movie.budget + "$"}
                         </Typography>
@@ -253,7 +253,7 @@ export default class Ditails extends React.Component {
                         <Typography color="primary" variant={"subtitle1"} className="fw-600">
                             {"Runtime: " + movie.runtime + "min"}
                         </Typography>
-                    </div>
+                    </div> */}
                     &nbsp;
                     {movie.homepage && (
                         <Typography color="primary" variant={"subtitle1"}>

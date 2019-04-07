@@ -23,13 +23,13 @@ const SearchPanel = () => {
 					<a className="dropdown-item" href="foo">
 						Something else here
 					</a>
-					<div
+					{/* <div
 						role="separator"
 						className="dropdown-divider"
-					/>
-					<a className="dropdown-item" href="foo">
+					/> */}
+					{/* <a className="dropdown-item" href="foo">
 						Separated link
-					</a>
+					</a> */}
 				</div>
 			</div>
 			<input

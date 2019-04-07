@@ -40,7 +40,7 @@ export default class Video extends Component {
         this.VideoLists =
             videos &&
             videos.map(video => (
-                <Grid key={video.id} item xs={4} sm={2} md={2} lg={2}>
+                <Grid key={video.id} item xs={4} sm={2} md={2} lg={2} className='videoCard'>
                     <div className="card">
                         <YoutubePlayer
                             videoId={video.key}

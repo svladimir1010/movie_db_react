@@ -19,9 +19,7 @@ import {
     GetKidsMovies
 } from "../MovieDB-components";
 import ErrorIndicator from "../error-indicator";
-
-// import Ditails  from "../ditails"
-
+import Ditails from "../ditails";
 export default class App extends Component {
     state = {
         hasError: false
@@ -36,7 +34,6 @@ export default class App extends Component {
             return <ErrorIndicator />;
         }
         return (
-            // <Ditails />
             <Router>
                 <div className="app">
                     <Header />
@@ -75,6 +72,15 @@ export default class App extends Component {
                         exact
                     />
                     <Route path="/kids/:id?" exact component={GetKidsMovies} />
+
+                    <Route path="/all/:id/ditail/:id" component={Ditails} exact />
+
+                    <Route
+                        path="/popular/:id/ditail/:id"
+                        component={Ditails}
+                        exact
+                    />
+                    <Route path="/kids/:id/ditail/:id" component={Ditails} exact />
                 </div>
             </Router>
         );

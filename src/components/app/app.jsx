@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./app.css";
 
-import png from "./837671.jpg";
+import jpg from "./cinema-logo.jpg";
 import Header from "../header";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 // import {
@@ -21,6 +21,11 @@ import {
 import ErrorIndicator from "../error-indicator";
 import Ditails from "../ditails";
 export default class App extends Component {
+     wallpaper = {
+        'display': 'flex',
+        'justify-content': 'center'
+     }
+
     state = {
         hasError: false
     };
@@ -41,10 +46,10 @@ export default class App extends Component {
                     <Route
                         path="/"
                         render={() => (
-                            <div className="wallpaper">
+                            <div className="wallpaper" style={this.wallpaper}>
                                 <img
                                     className="img-fluid"
-                                    src={png}
+                                    src={jpg}
                                     alt="wallpaper: World-People"
                                 />
                             </div>

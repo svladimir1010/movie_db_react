@@ -74,7 +74,8 @@
 }
 
 .fadeIn-bottom {
-    top: 80%;
+    /* top: 80%; */
+    left: 49.65%;
 }
 
 .app-body {

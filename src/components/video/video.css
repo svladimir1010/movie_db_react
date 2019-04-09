@@ -3,3 +3,27 @@
     position: relative;
     bottom: 7rem;
 }
+
+.dashboard .video {
+    margin: auto;
+    width: 100%;
+    display: flex;
+}
+
+.dashboard .video .lds-double-ring :first-child {
+    width: 125px;
+    height: 125px;
+    top: -12rem;
+}
+
+.dashboard .video lds-css {
+    position: relative;
+    top: -9rem;
+    left: -26rem;
+}
+
+.dashboard .video .lds-double-ring :last-child {
+    width: 97px;
+    height: 97px;
+    top: -11.1rem;
+}

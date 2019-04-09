@@ -117,8 +117,7 @@ const withData = (View, getData) => {
 };
 
 const Page = ({ decrement, increment, items, page }) => {
-    return (
-        <>
+    return <>
             <div className="dashboard-but top">
                 <Button decrement={decrement} increment={increment} page={page} />
             </div>
@@ -127,7 +126,6 @@ const Page = ({ decrement, increment, items, page }) => {
                 <Button decrement={decrement} increment={increment} page={page} />
             </div>
         </>
-    );
 };
 
 Page.propTypes = {

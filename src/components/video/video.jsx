@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./video.css";
-import { Typography, Grid } from "@material-ui/core";
-import YoutubePlayer from "react-youtube-player";
+import VideoLists from "../item-video";
+import { Grid } from "@material-ui/core";
 import SwapiService from "../../services";
+import Spinner from "../spinner";
 
 export default class Video extends Component {
     swapi = new SwapiService();
@@ -32,41 +33,13 @@ export default class Video extends Component {
     };
 
     render() {
-        const { videos } = this.state;
+        const { videos, loading } = this.state;
+        this.videoLists = videos.map(video => <VideoLists video={video} />);
 
-        this.VideoLists =
-            videos &&
-            videos.map(video => (
-                <Grid
-                    key={video.id}
-                    item
-                    xs={4}
-                    sm={2}
-                    md={2}
-                    lg={2}
-                    className="videoCard">
-                    <div className="card">
-                        <YoutubePlayer
-                            videoId={video.key}
-                            playbackState="unstarted"
-                            configuration={{
-                                showinfo: 2,
-                                controls: 3
-                            }}
-                        />
-                        <div className="content-details fadeIn-bottom">
-                            <Typography variant="h6" className="content-title">
-                                {video.name}
-                            </Typography>
-                        </div>
-                    </div>
-                </Grid>
-            ));
-
-        return (
-            <Grid container spacing={16} className="dashboard">
-                {this.VideoLists ? this.VideoLists : "Movie has not trailers"}
+        return <Grid container spacing={16} className="dashboard">
+                <div className="video">
+                    {loading ? <Spinner /> : this.videoLists}
+                </div>
             </Grid>
-        );
     }
 }

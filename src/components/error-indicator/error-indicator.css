@@ -2,7 +2,7 @@
     background: pink;
     border-radius: 8px;
     display: -webkit-flex;
-    padding: 60px;
+    padding: 100px;
     display: flex;
     -webkit-flex-direction: column;
     flex-direction: column;

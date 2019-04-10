@@ -8,16 +8,24 @@ import {
     CardMedia
 } from "@material-ui/core";
 import { URL_IMG, IMG_SIZE_LARGE } from "../../const";
-import SwapiService from "../../services";
+import ErrorIndicator from "../error-indicator";
+import Spinner from "../spinner";
 
 export default class Recommendation extends React.Component {
     //regExp = /^\/\D*\/\d\/\D+/regExp
     regExp = /^\/\S*[^0-9]/;
-    swapi = new SwapiService();
     state = {
         recommendations: [],
         id: this.props.id,
-        loading: true
+        loading: true,
+        error: false
+    };
+
+    onError = err => {
+        this.setState({
+            error: true,
+            loading: false
+        });
     };
 
     componentDidMount() {
@@ -32,7 +40,7 @@ export default class Recommendation extends React.Component {
 
     getRecommendation = id => {
         if (id) {
-            return this.swapi
+            return this.props.swapi
                 .getRecommendation(id)
                 .then(data => {
                     this.setState({
@@ -51,10 +59,18 @@ export default class Recommendation extends React.Component {
     };
 
     render() {
-        const { recommendations } = this.state;
+        const { recommendations, loading, error } = this.state;
+        (() => {
+            setTimeout(() => {
+                window.scroll(0, 0);
+            }, 0);
+        })();
 
+        const hasData = !(loading || error);
+        if (loading) return <Spinner />;
+        if (error) return <ErrorIndicator />;
         this.RecommendationLists =
-            recommendations &&
+            hasData &&
             recommendations.map(rec => (
                 <Grid
                     key={rec.id}

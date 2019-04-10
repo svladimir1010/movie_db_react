@@ -13,10 +13,7 @@ import {
 } from "@material-ui/core";
 import Recommendation from "../recommendation";
 import Video from "../video";
-import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
-
-import SwapiService from "../../services";
 
 const theme = createMuiTheme({
     palette: {
@@ -30,7 +27,6 @@ const theme = createMuiTheme({
 });
 
 export default class Ditails extends React.Component {
-    swapi = new SwapiService();
     state = {
         movie: [],
         id: parseInt(this.props.match.params.id),
@@ -38,10 +34,9 @@ export default class Ditails extends React.Component {
         error: false
     };
 
-    onError = err => {
+    onError = () => {
         this.setState({
-            error: true,
-            loading: false
+            error: true
         });
     };
 
@@ -59,12 +54,11 @@ export default class Ditails extends React.Component {
 
     dataMovie = id => {
         if (id) {
-            return this.swapi
+            return this.props.swapi
                 .getDitails(id)
                 .then(data => {
                     this.setState({
-                        movie: data,
-                        loading: false
+                        movie: data
                     });
                 })
                 .catch(this.onError);
@@ -72,7 +66,9 @@ export default class Ditails extends React.Component {
     };
 
     render() {
-        const { movie } = this.state;
+        const { movie, error } = this.state;
+        const { swapi } = this.props;
+        if (error) return <ErrorIndicator />;
         this.Pro =
             movie.production_companies &&
             movie.production_companies.map(pc => (
@@ -138,7 +134,7 @@ export default class Ditails extends React.Component {
                                 className="fw-600 detail-video">
                                 Videos
                             </Typography>
-                            <Video id={this.state.id} />
+                            <Video id={this.state.id} swapi={swapi} />
                         </Grid>
                         <Typography
                             color="primary"

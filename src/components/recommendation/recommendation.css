@@ -2,3 +2,11 @@
     position: relative;
     bottom: 8rem;
 }
+.detail-rec .lds-double-ring :first-child {
+    left: 190%;
+    top: -32px;
+}
+.detail-rec .lds-double-ring :last-child {
+    left: 197%;
+    top: -18px;
+}

@@ -23,7 +23,6 @@ const CardMovie = props => {
                             className="content-image"
                             alt="Here the pictur"
                         />
-
                         <div className="content-details fadeIn-bottom">
                             <Typography variant="h6" className="content-title">
                                 {dataMovie.title}

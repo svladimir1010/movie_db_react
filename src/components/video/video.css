@@ -8,6 +8,7 @@
     margin: auto;
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .dashboard .video .lds-double-ring :first-child {
@@ -27,3 +28,12 @@
     height: 97px;
     top: -11.1rem;
 }
+
+.error-video {
+    display: contents;
+}
+
+.error-video .error-indicator {
+    padding: 0;
+}
+

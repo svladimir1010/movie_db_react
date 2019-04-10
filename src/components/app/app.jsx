@@ -1,18 +1,9 @@
 import React, { Component } from "react";
 import "./app.css";
-
+import {createBrowserHistory} from "history";
 import jpg from "./cinema-logo.jpg";
 import Header from "../header";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-// import {
-//     Grid,
-//     Typography,
-//     Table,
-//     TableBody,
-//     TableCell,
-//     TableHead,
-//     TableRow
-// } from "@material-ui/core";
 import {
     GetPopularMovies,
     GetAllMovies,
@@ -20,7 +11,11 @@ import {
 } from "../MovieDB-components";
 import ErrorIndicator from "../error-indicator";
 import Ditails from "../ditails";
+import SwapiService from "../../services";
+const history = createBrowserHistory();
 export default class App extends Component {
+
+    swapi = new SwapiService();
      wallpaper = {
         'display': 'flex',
         'justify-content': 'center'
@@ -35,14 +30,19 @@ export default class App extends Component {
     }
 
     render() {
+        const  Scrolldown = () => {
+            setTimeout(() => {
+             window.scroll(0,0);
+            },0); 
+        }
+        window.onload = Scrolldown();
         if (this.state.hasError) {
             return <ErrorIndicator />;
         }
         return (
-            <Router>
+            <Router history={history} >
                 <div className="app">
                     <Header />
-
                     <Route
                         path="/"
                         render={() => (
@@ -78,14 +78,20 @@ export default class App extends Component {
                     />
                     <Route path="/kids/:id?" exact component={GetKidsMovies} />
 
-                    <Route path="/all/:id/ditail/:id" component={Ditails} exact />
+                    <Route path="/all/:id/ditail/:id" render={(props)=><Ditails swapi={this.swapi} {...props}/>} exact />
 
                     <Route
                         path="/popular/:id/ditail/:id"
-                        component={Ditails}
+                        render={(props)=><Ditails swapi={this.swapi} {...props}/>}
                         exact
                     />
-                    <Route path="/kids/:id/ditail/:id" component={Ditails} exact />
+                    <Route path="/kids/:id/ditail/:id" render={(props)=><Ditails swapi={this.swapi} {...props}/>} exact      />
+
+                    
+
+                    
+
+
                 </div>
             </Router>
         );

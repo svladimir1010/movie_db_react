@@ -10,14 +10,14 @@ const VideoLists = ({ video }) => {
                     playbackState="unstarted"
                     configuration={{
                         showinfo: 2,
-                        controls: 3
+                        controls: 5
                     }}
                 />
-                <div className="content-details fadeIn-bottom">
+                {/* <div className="content-details fadeIn-bottom">
                     <Typography variant="h6" className="content-title">
                         {video.name}
                     </Typography>
-                </div>
+                </div> */}
             </div>
         </Grid>
 };

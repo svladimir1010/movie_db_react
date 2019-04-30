@@ -24,6 +24,10 @@ export default class App extends Component {
         hasError: false
     };
 
+componentDidMount() {
+    
+}
+
     componentDidCatch() {
         this.setState({ hasError: true });
     }
@@ -32,10 +36,18 @@ export default class App extends Component {
         if (this.state.hasError) {
             return <ErrorIndicator />;
         }
+        
         return (
             <Router history={history}>
                 <div className="app">
-                    <Header />
+                
+                    <Route path='/' component={Header}/>
+                    
+
+
+
+
+
                     <Route
                         path="/"
                         render={() => (
@@ -87,6 +99,12 @@ export default class App extends Component {
                         render={props => <Ditails swapi={this.swapi} {...props} />}
                         exact
                     />
+                    <Route
+                        path="/ditail/:id"
+                        render={props => <Ditails swapi={this.swapi} {...props} />}
+                        exact
+                    />
+
                 </div>
             </Router>
         );

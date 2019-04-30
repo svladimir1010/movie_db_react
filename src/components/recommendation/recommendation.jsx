@@ -54,6 +54,7 @@ export default class Recommendation extends React.Component {
 
     goToDetail = id => {
         this.setState({ id: id });
+        console.log(this.props.match.url)
         const url = this.regExp.exec(this.props.match.url)[0];
         this.props.history.push(url + id);
     };
@@ -65,7 +66,7 @@ export default class Recommendation extends React.Component {
                 window.scroll(0, 0);
             }, 0);
         })();
-
+// console.log(this.props)
         const hasData = !(loading || error);
         if (loading) return <Spinner />;
         if (error) return <ErrorIndicator />;

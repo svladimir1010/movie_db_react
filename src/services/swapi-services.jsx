@@ -14,15 +14,31 @@ export default class SwapiService {
     _API_KEY = "api_key=df355bdb560d2dcd61eda60746ed703f";
     _API_BASE_URL = "https://api.themoviedb.org/3/";
 
-    async getResource(url, id = null, vid = null, region = null) {
+    async getResource(
+        url,
+        id = null,
+        vid = null,
+        region = null,
+        csearchMovie = 0
+    ) {
         const res = await fetch(
-            `${this._API_BASE_URL}${url}${this._API_KEY}${this.LANG}${id}`
+            `${this._API_BASE_URL}${url}${this._API_KEY}${
+                this.LANG
+            }${id}${csearchMovie}`
         );
         if (!res.ok) {
-            throw new Error(`У нас ПОХИБКА ${url}` + `, received ${res.status}`);
+            throw new Error(
+                `У нас ПОХИБКА ${url}` + `, received ${res.status}`
+            );
         }
         return await res.json();
     }
+
+    getSearchMovie = async name => {
+        const searchMovie = `&query=${name}&page=1`;
+        const res = await this.getResource(`search/movie?`, searchMovie);
+        return res.results
+    };
 
     getRecommendation = async (id = 2) => {
         const url = `movie/${id}/recommendations?`;
@@ -50,7 +66,9 @@ export default class SwapiService {
     }
 
     async getImage(key) {
-        const res = await fetch(`${this.IMAGE_BASE_URL}${this.POSTER_SIZE}/${key}`);
+        const res = await fetch(
+            `${this.IMAGE_BASE_URL}${this.POSTER_SIZE}/${key}`
+        );
         return res;
     }
 
@@ -87,11 +105,11 @@ export default class SwapiService {
     };
 }
 
-// https://api.themoviedb.org/3/tv/1?api_key=df355bdb560d2dcd61eda60746ed703f&language=en-US
+// https://api.themoviedb.org/3/search/movie?api_key=df355bdb560d2dcd61eda60746ed703f&language=en-US&query=james&page=1
 
 const swapi = new SwapiService();
 
-swapi.getRecommendation();
+swapi.getSearchMovie("gam");
 
 // swapi.getSerials(2)
 //  .then(body => console.log(body))
